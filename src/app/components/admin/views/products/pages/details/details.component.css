@@ -1,0 +1,47 @@
+input{
+  background: rgb(255, 255, 255) !important;
+}
+label{
+  color:rgb(0, 0, 0)!important;
+}
+
+button>svg{
+  height:2.5rem;
+  width:2.5rem;
+  color: rgb(12, 90, 12);
+}
+button>svg:hover{
+  color:rgb(7, 182, 7)
+}
+/*table*/
+td {
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.tooltipPer .matTooltip{
+  white-space: normal !important;
+}
+th.mat-header-cell {
+  text-align: center !important;
+}
+.mat-cell {
+  text-align: center;
+  justify-content:center;
+}
+
+/*form*/
+
+/*notification for products*/
+.notification-input{
+  max-width: 70px;
+  border: transparent!important;
+}
+.notification-btn{
+  min-width: 100px;
+}
+.notification-btn:hover{
+  opacity: 0.9;
+}
+/*form <===*/

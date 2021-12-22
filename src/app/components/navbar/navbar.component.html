@@ -1,0 +1,124 @@
+<nav class="navbar navbar-expand-lg navbar-dark border-bottom shadow-sm sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/admin']">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--nav links -->
+    <div class="collapse navbar-collapse justify-content-sm-center" id="navbarSupportedContent">
+      <!--item for admin-->
+      <div class="navbar-nav me-auto mb-2 mb-lg-0 text-center" *ngIf="user.role == 'user_admin'">
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Clientes
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/admin/customers/register']">Registrar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" [routerLink]="['/admin/customers/list']">Lista</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" [routerLink]="['/admin/customers/active']">Activos</a></li>
+          </ul>
+        </div>
+        <!--item-->
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Inventario
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/admin/products/add']">Agregar Producto</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" [routerLink]="['/admin/products/list']">Lista de Productos</a></li>
+          </ul>
+        </div>
+        <!--item-->
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Facturas
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/admin/payments/add/']">Generar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" [routerLink]="['/admin/payments/list']">Movimientos</a></li>
+          </ul>
+        </div>
+        <!--item-->
+      </div>
+      <!--item for user-->
+      <div class="navbar-nav me-auto mb-2 mb-lg-0 text-center" *ngIf="user.role == 'user_cashier' || user.role == 'user_receptionist'">
+        <div class="nav-item">
+          <a class="nav-link"  role="button" [routerLink]="['/user/home']">
+            Home
+          </a>
+        </div>
+        <!--item-->
+        <div class="nav-item">
+          <a class="nav-link"  role="button" [routerLink]="['/user/scan/activate-customer']">
+            Activar Cliente
+          </a>
+        </div>
+        <!--item-->
+        <div class="nav-item">
+          <a class="nav-link"  role="button" [routerLink]="['/user/scan/scan-to-pay']">
+            Facturar
+          </a>
+        </div>
+      </div>
+      <!--NOTIFICATIONS-->
+      <div class="navbar-nav navbar-end text-center">
+        <div class="nav-item d-flex dropdown">
+          <!--NOTIFICATIONS ICON-->
+          <div class="d-flex align-items-center me-5 dropdown" *ngIf="user.role == 'user_admin'">
+
+            <!--mat button and badge-->
+            <button mat-icon-button data-bs-toggle="dropdown" data-bs-auto-close="outside">
+              <mat-icon [matBadge]="notifi_qty" [matBadgeHidden]="notifi_qty == 0" matBadgeSize="small" class="notifications-bell">
+                notifications
+              </mat-icon>
+            </button>
+            <!--dropdawn menu-->
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
+              <li><h3 class="dropdown-header text-center">Notificaciones</h3></li>
+              <li><hr class="dropdown-divider"></li>
+              <li *ngFor="let notification of notifications">
+                <a class="dropdown-item d-flex w-100" [routerLink]="['/admin/products/details/',notification.item.id]">
+                  <mat-icon class="me-3">email</mat-icon> 
+                  <div class="text-start">
+                    <p>
+                      Stock minimo alcanzado.
+                    </p>
+                    <p>
+                      Quedan {{notification.item.product_quantity}} unidad/es de 
+                      <span class="product-name">{{notification.item.name}}</span>.
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li *ngIf="notifications != null && notifications.length < 1">
+                <p class="dropdown-header text-center text-muted p-3">
+                  No hay notificaciones 
+                </p>
+              </li>
+            </ul>
+          </div>
+          <!--close sesion dropdawn-->
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+              <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
+            </svg>
+            {{user.name +' '+user.surname}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" (click)='logOut()'>Cerrar sesion</a></li>
+            <!--
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Configuracion</a></li>
+            -->
+          </ul>
+        </div>  
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="clearfix mb-3">...</div>

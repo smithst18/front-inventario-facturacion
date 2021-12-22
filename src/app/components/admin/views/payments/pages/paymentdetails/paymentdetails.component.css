@@ -1,0 +1,22 @@
+h1{
+  background: var(--color-p);
+  color: var(--color-ex2);
+}
+/*tables*/
+thead{
+  background: var(--color-p);
+  color: var(--color-ex2);
+  border-bottom: inherit;
+}
+.simpletable>thead>tr>th{
+  width: 50%;
+}
+.simpletable>tbody>tr>td{
+  width: 50%;
+}
+.hide-th{
+  color: var(--color-p);
+}
+.td-address{
+  max-width: 150px;
+}

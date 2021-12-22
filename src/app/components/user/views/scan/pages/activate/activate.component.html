@@ -1,0 +1,53 @@
+<div class="container w-75 p-5 mat-elevation-z4">
+  <div class="row row-tittle mat-elevation-z2">
+    <div class="col">
+      <h1 class="text-center">
+       {{pageName}}:
+      </h1>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-content p-5 mat-elevation-z1">
+    <!--scan box-->
+    <div class="col">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <div class="scan-box">
+            <zxing-scanner
+            [timeBetweenScans]="3000"
+            [delayBetweenScanSuccess]="10000"
+            [formats]="allowedFormats"
+            (scanSuccess)="scanSuccess($event)"
+            (scanError)="scanError($event)"
+            ></zxing-scanner>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--loader qr box-->
+    <div class="col text-center mt-lg-5 mat-elevation-z2 p-2" *ngIf="loader == true">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="me-2">
+          <mat-progress-spinner [diameter]="25" [mode]="'indeterminate'" [value]="80">
+  
+          </mat-progress-spinner>
+        </div>
+        <div>
+          Escaneando QRC
+        </div> 
+      </div> 
+    </div>
+    <!--if status ok-->
+    <div class="col text-center">
+      <div class="d-flex justify-content-center align-items-center" *ngIf="loader == false">
+        <div class="me-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+          </svg>
+        </div>
+        <div>
+          QRC Aceptado
+        </div> 
+      </div> 
+    </div>
+  </div>
+</div>

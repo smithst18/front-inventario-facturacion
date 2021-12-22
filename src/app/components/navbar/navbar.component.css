@@ -1,0 +1,49 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+li>a{
+  cursor:pointer;
+}
+/*nav styles color*/
+mat-icon{
+  color: var(--color-ex2);
+}
+.navbar{
+  background: var(--color-p3) !important;
+}
+.nav-link{
+  color: var(--color-ex2);
+}
+.dropdown-item:is{
+  transition-delay: 0.1s;
+  transition-duration: 0.1s;
+}
+.dropdown-item:hover{
+  background: var(--color-p3);
+  color: var(--color-ex2);
+  transition-delay: 0.1s;
+  transition-duration: 0.2s;
+}
+/*clases de el dropdawn de notificaciones*/
+/*texto con el nombre del objeto*/
+.product-name{
+  color: var(--color-2);
+}
+/*icons*/
+.notifications-bell{
+  font-size: 1.4rem !important;
+}
+.notifications-bell:hover{
+  opacity: 0.8;
+}

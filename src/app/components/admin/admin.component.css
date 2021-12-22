@@ -1,0 +1,21 @@
+/*menu boxes size*/
+.mainbox{
+  background: var(--color-ex2); 
+  border: 1px solid var(--color-ex2);
+}
+.sizeCustom{
+  height: 230px;
+  background: var(--color-ex2);
+}
+h1{
+  color: var(--color-p);
+}
+span>svg,span>p{
+  color: var(--color-s);
+}
+a{
+  color: var(--color-p);
+}
+a:hover{
+  color: var(--color-s3);
+}

@@ -1,0 +1,117 @@
+<div class="container px-5 mb-5">
+  <div class="container-fluid border mat-elevation-z2" *ngIf="payment">
+    <div class="row mb-5">
+      <!-- invoice data-->
+      <div class="col-lg-12 d-flex justify-content-center p-5">
+        <div class="w-100 text-center">
+          <h1>Factura</h1>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-end mb-5">
+      <div class="col-lg-6 px-5">
+        
+      </div>
+      <div class="col-lg-6 px-5">
+          <table class="table table-borderless text-center simpletable">
+            <thead>
+              <tr>
+                <th> FACTURA #: </th>
+                <th> FECHA: </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{payment.id}}</td>
+                <td>{{payment.createdAt | date:'MMM d, y, h:mm:ss a'}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  
+    <div class="row  justify-content-between mb-5">
+      <!-- client data-->
+      <div class="col-lg-6 px-5">
+        <table class="table table-borderless simpletable">
+          <thead>
+            <tr>
+              <th> FACTURAR A: </th>
+              <th class="hide-th"> - </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nombre:</td>
+              <td>{{payment.client.name}}</td>
+            </tr>
+            <tr>
+              <td>Ci:</td>
+              <td>{{payment.client.ci}}</td>
+            </tr>
+            <tr>
+              <td>Telefono:</td>
+              <td>{{payment.client.phone_number}}</td>
+            </tr>
+            <tr>
+              <td>Direccion:</td>
+              <td class="td-address text-break">{{payment.client.address}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- customer id  -  tipo de factura-->
+      <div class="col-lg-6 px-5">
+        <table class="table table-borderless text-center simpletable">
+          <thead>
+            <tr>
+              <th> CODIGO DEL CLIENT: </th>
+              <th> TIPO DE PAGO: </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{payment.client.id}}</td>
+              <td>{{payment.payment_type}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <div class="row mb-5">
+      <!-- prodcuts data-->
+      <div class="col-lg-12 px-5">
+        <div class="table-responsive">
+          <table class="table table-bordered text-center">
+            <thead>
+              <tr>
+                <th> PRODUCTO: </th>
+                <th> CANTIDAD: </th>
+                <th> PRECIO UNITARIO:</th>
+                <th> IVA:</th>
+                <th> MONTO BRUTO:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of payment.Product_Payments">
+                <td>{{product.paidProduct.name}}</td>
+                <td>{{product.product_qty}}</td>
+                <td>{{product.product_price}}</td>
+                <td>{{payment.iva + " %"}}</td>
+                <td>{{product.product_qty * product.product_price}}</td>
+              </tr>
+              <tr>
+                <td colspan="4"></td>
+                <td class="text-center text-success">{{"total: " + payment.total}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix">...</div>

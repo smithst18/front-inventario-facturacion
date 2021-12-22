@@ -1,0 +1,102 @@
+<div class="container px-3 mb-5">
+  <div class="container-fluid border">
+    <!--mainbox-->
+    <!--titles-->
+    <div class="row justify-content-center border">
+      <div class="col-lg-4 border rounded p-3 my-5">
+        <div class="text-center">
+          <p>
+            Registrar Cliente:
+          </p>
+        </div>
+        <div>
+          <form #customerForm="ngForm">
+            <!--name-->
+            <div class="form-floating mb-2">
+              <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+              name="name" #name="ngModel" [(ngModel)]="customer.name" require>
+              <label for="floatingInput">Nombre:</label>
+            </div>
+            <!--price-->
+            <div class="form-floating mb-2">
+              <input type="text" class="form-control" id="floatingInput" placeholder="2758962"
+              name="ci" #name="ngModel" [(ngModel)]="customer.ci" require>
+              <label for="floatingInput">CI: <span class="text-muted">"ejm: V-278965236"</span></label>
+            </div>
+            <!--product code-->
+            <div class="form-floating mb-2">
+              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+              name="email" #name="ngModel" [(ngModel)]="customer.email" require>
+              <label for="floatingInput">Email:</label>
+            </div>
+            <!--product-quantity-->
+            <div class="form-floating mb-2">
+              <input type="text" class="form-control" id="floatingInput" placeholder="phone number"
+              name="phone_number" #name="ngModel" [(ngModel)]="customer.phone_number" require>
+              <label for="floatingInput">Numero telefonico:</label>
+            </div>
+            <div class="form-floating mb-3">
+              <textarea class="form-control" id="floatingTextarea" placeholder="escribir direccion"
+              name="address" #name="ngModel" [(ngModel)]="customer.address" require></textarea>
+              <label for="floatingTextarea">Dirección:</label>
+            </div>
+            <!--alert-->
+            <div *ngIf="showAlert">
+              <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </symbol>
+              </svg>
+              <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div>
+                  Debes cumplis lo siguiente:
+                  <ul >
+                    <li>Nombre y apellido requerido</li>
+                    <li>CI: V/E + codigo ejm : V-25698741</li>
+                    <li>email unico y requerido</li>
+                    <li>numero de telefono unico y requerido</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!--alert-->
+          </form>
+          <div class="text-center d-grid gap-1">
+            <button type="submit" class="btn btn-primary" 
+              (click)="saveCustomer(customerForm)" 
+              [disabled]="">
+                Registrar
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- titles -->
+      <div class="col-md-7 border rounded p-3 my-5 ms-3">
+        <div class="text-center">
+          <p>
+            Ultimos Clientes Registrados
+          </p>
+          <div>
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre:</th>
+                  <th scope="col">Email:</th>
+                  <th scope="col">Tlf:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let customer of customers | slice:limit">
+                  <th>{{customer.name}}</th>
+                  <td>{{customer.email}}</td>
+                  <td>{{customer.phone_number}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

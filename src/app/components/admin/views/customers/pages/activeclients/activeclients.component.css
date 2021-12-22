@@ -1,0 +1,50 @@
+/*loader*/
+.loader-box{
+  height: 80vh;
+}
+
+/*table*/
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+  width:30%;
+}
+td, th {
+  width: 25%;
+}
+td {
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+th.mat-header-cell {
+  text-align: center !important;
+}
+.mat-cell {
+  text-align: center;
+  justify-content:center;
+}
+/*icons*/
+.bi-power{
+  width: 1.3rem;
+  height: 1.3rem;
+}
+/*a*/
+.bi-pen:hover{
+  cursor: pointer;
+  opacity: 0.9;
+  color: blueviolet;
+}
+.bi-power:hover{
+  cursor: pointer;
+  opacity: 0.9;
+  color: rgb(221, 5, 5);
+}
+.active-status:hover{
+  cursor: pointer;
+  opacity: 0.9;
+  color: rgb(42, 209, 9);
+}

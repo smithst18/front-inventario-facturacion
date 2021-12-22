@@ -1,0 +1,21 @@
+/*loader*/
+.loader-box{
+  height: 80vh;
+}
+
+/*table*/
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+  width:30%;
+}
+td, th {
+  width: 25%;
+}
+.mat-row:hover .mat-cell {
+  cursor: pointer;
+  color: blue;
+  border-color: blue;
+}

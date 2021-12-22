@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row main-box mat-elevation-z4 justify-content-center w-md-50">
+    <div class="col-sm-12 border p-4">
+      <!--tittle-->
+      <div class="text-center mat-elevation-z4">
+        <h1>
+          Panel de Opciones
+        </h1>
+      </div>
+      <div class="row row-cols-1  row-cols-sm-1 m-2 m-sm-5 justify-content-center">
+        <!--link container with options-->
+        <div class="col p-2 w-50">
+          <!--link with options-->
+          <a class="text-decoration-none" [routerLink]="['/user/scan/activate-customer']">
+            <div class="d-flex justify-content-center p-3 mat-elevation-z2">
+              <div class="d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                  <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                </svg>
+                <span class="ms-sm-3 ms-1">
+                  Activar Cliente
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!--link container with options-->
+        <div class="col p-2 w-50">
+          <!--link with options-->
+          <a class="text-decoration-none" [routerLink]="['/user/scan/scan-to-pay']">
+            <div class="d-flex justify-content-center p-3 mat-elevation-z2">
+              <div class="d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card-fill" viewBox="0 0 16 16">
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/>
+                </svg>
+                <span class="ms-sm-3 ms-1">
+                  Cargar Productos
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

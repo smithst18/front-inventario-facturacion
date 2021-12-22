@@ -1,0 +1,98 @@
+<div class="container p-3">
+  <div class="row px-3">
+    <div class="col-md-12" *ngIf="!customers">
+      <!--loader-->
+      <div class="text-center">
+        <img src="assets/gift/loader.gif" alt="loader">
+      </div>
+      <p class="text-center">
+        Cargando Data
+      </p>
+    </div>
+    <!--Table-->
+    <div class="col-md-12 mat-elevation-z2 p-3 mb-5 bg-body rounded">
+      <div class="pt-5 ">
+        <p class="text-center fs-2 text-decoration-underline">
+          Clientes Activos:
+        </p>
+      </div>
+      <div class="">
+        <mat-form-field appearance="standard">
+          <mat-label>Buscar</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ej. jugo" #input>
+        </mat-form-field>
+      </div>
+      <div class="border mat-elevation-z2">
+        <table mat-table [dataSource]="dataSource">
+        
+          <!-- name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nombre: </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.name}} </td>
+          </ng-container>
+          <!-- ci Column -->
+          <ng-container matColumnDef="ci">
+            <th mat-header-cell *matHeaderCellDef> Ci: </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.ci}} </td>
+          </ng-container>
+          <!-- email Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email: </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.email}}</td>
+          </ng-container>
+          <!-- tlf Column -->
+          <ng-container matColumnDef="phone_number">
+            <th mat-header-cell *matHeaderCellDef> Tlf: </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.phone_number}} </td>
+          </ng-container>
+          <!-- status Column-->
+          <ng-container matColumnDef="active">
+            <th mat-header-cell *matHeaderCellDef> &nbsp;Estado&nbsp; </th>
+            <td mat-cell *matCellDef="let customer">
+              <a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="active-status" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10z"/>
+                </svg>
+              </a>
+            </td>
+          </ng-container>
+          <!-- deactivate Column-->
+          <ng-container matColumnDef="deactivate">
+            <th mat-header-cell *matHeaderCellDef> &nbsp;desactivar&nbsp; </th>
+            <td mat-cell *matCellDef="let customer">
+              <a (click)="desactiveCustomer(customer.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-power" viewBox="0 0 16 16">
+                  <path d="M7.5 1v7h1V1h-1z"/>
+                  <path d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"/>
+                </svg>
+              </a>
+              <span *ngIf="customer.active == false"> - </span>
+            </td>
+          </ng-container>
+          <!-- details Column-->
+          <ng-container matColumnDef="details">
+            <th mat-header-cell *matHeaderCellDef> &nbsp;detalles&nbsp; </th>
+            <td mat-cell *matCellDef="let customer">
+              <a (click)="details(customer.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+              </a>
+              <span *ngIf="customer.active == false"> - </span>
+            </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No encontrado "{{input.value}}"</td>
+          </tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" aria-label="Select page of users"></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

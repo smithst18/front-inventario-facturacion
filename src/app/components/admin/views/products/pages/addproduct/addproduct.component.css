@@ -1,0 +1,9 @@
+button>svg{
+  height:3rem;
+  width:3rem;
+  color: rgb(12, 90, 12);
+}
+
+button>svg:hover{
+  color:rgb(7, 182, 7)
+}

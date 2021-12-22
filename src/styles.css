@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.clearfix{
+  color:transparent !important;
+}
+.active-status{
+  width: 1.8rem;
+  height: 1.8rem;
+  color:rgb(4, 158, 4);
+}
+
+.inactive-status{
+  width: 2rem;
+  height: 2rem;
+  color:rgb(218, 10, 10);
+}
+/*colors */
+*{
+  --color-p:#004169;
+  --color-p2:#406c97;
+  --color-p3:#001b3e;
+  --color-s:#690041;
+  --color-s2:#9a3a6c;
+  --color-s3:#3a001b;
+  --color-ex:#000000;
+  --color-ex2:#ffffff;
+}
+/*icons globales*/
+.bi-check-lg{
+  color:rgb(8, 129, 8);
+}
+.clearfix{
+  color: transparent;
+}

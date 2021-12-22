@@ -1,0 +1,29 @@
+@media screen and (max-width:424px){
+}
+
+@media screen and (min-width:425px){
+  .row-content{
+    height: 60vh;
+  }
+}
+
+.row-tittle{
+  background: var(--color-p);
+}
+.row-tittle>div>h1{
+  color: var(--color-ex2);
+}
+.row-content{
+  background: rgba(224, 223, 223, 0.2);
+  height: 65vh;
+  color: var(--color-ex);
+}
+.scan-box{
+  width: 20rem;
+  height: auto;
+}
+
+.loader{
+  width: 20px;
+  height: 20px;
+}

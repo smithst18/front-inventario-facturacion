@@ -1,0 +1,28 @@
+/*table*/
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+  width:30%;
+}
+td, th {
+  width: auto;
+}
+td {
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+th.mat-header-cell {
+  text-align: center !important;
+}
+.mat-cell {
+  text-align: center;
+  justify-content:center;
+}
+.mat-row:hover .mat-cell {
+  cursor: pointer;
+  color: var(--color-1);
+}
