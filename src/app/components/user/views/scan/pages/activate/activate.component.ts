@@ -18,6 +18,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class ActivateComponent implements OnInit, OnDestroy {
   //propertys
+  enableCam:boolean;
   qrstring!:string;
   public pageName!:string;
   public loader:Boolean;
@@ -32,6 +33,7 @@ export class ActivateComponent implements OnInit, OnDestroy {
     private _customerService:CustomerService,
     private _router:Router,
   ) {
+    this.enableCam = true;
     this.loader = true;
     this.customer = new Customer(0,'','','','','','',false)
    }
@@ -44,6 +46,7 @@ export class ActivateComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.subscriptions.forEach( sub => {sub.unsubscribe(); });
+    this.enableCam = false;
   }
   //se ejecuta una funcion en base a la url activada 
   scanSuccess(qrstring:string){

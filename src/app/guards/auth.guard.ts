@@ -26,7 +26,7 @@ export class AuthGuard implements CanLoad, CanActivate {
   //usuario  llendo a admin  //crear data en user route y pasar mismo guard
   loginAuth(route:any):boolean{
     let user = this._userService.getIdentity();
-    if(user != null && user.role == route.data.role){
+    if(user != null && (user.role == route.data.role || user.role == route.data.role2)){
       return true; 
     }
     else{

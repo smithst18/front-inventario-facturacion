@@ -21,7 +21,12 @@ const routes: Routes = [
   { 
     path: 'user',
      loadChildren: () => 
-      import('./components/user/user.module').then(m => m.UserModule)
+      import('./components/user/user.module').then(m => m.UserModule),
+      data:{
+        role:'user_cashier',
+        role2:'user_receptionist'
+      },
+      canLoad:[AuthGuard]
   },
   { path: 'scan', loadChildren: () => import('./components/user/views/scan/scan.module').then(m => m.ScanModule) },
   

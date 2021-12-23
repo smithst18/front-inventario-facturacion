@@ -57,9 +57,8 @@ export class AddproductComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this._productTypeService.addType(this.token,this.product_type).subscribe(
       response =>{
         if(response.status = 200){
-          console.log(response);
           //setear nuevamente el array de product types
-          this.productTypes = response.product_types;
+          this.getProductFamily();
           this.messageSuccess = response.message;
           form.reset();
           this.messageError = '';
@@ -71,7 +70,7 @@ export class AddproductComponent implements OnInit, OnDestroy {
       err =>{
           this.messageError = "campo vacio o familia ya registrada";
           this.messageSuccess = '';
-          console.log(err);
+          console.error(err);
       }
     ));
   }
@@ -85,8 +84,14 @@ export class AddproductComponent implements OnInit, OnDestroy {
         }
       },
       err =>{
-        console.log(err.error.message);
-        this.sweet.PsavedErrorAlert();
+        if(err){
+          if(err.error.message == "The Product is already registered"){
+            this.sweet.PAlert();
+          }else{
+            this.sweet.PsavedErrorAlert();
+            console.error(err);
+          }
+        }
       }
     ));
   }

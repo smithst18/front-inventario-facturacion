@@ -1,0 +1,18 @@
+.main{
+  background-color: var(--color-p);
+}
+.btn{
+  background: var(--color-p3);
+  color: var(--color-ex2);
+}
+.btn:hover{
+  background: var(--color-p2);
+  color: var(--color-ex2);
+}
+.row>.col-lg-4, .col-lg-7{
+  background: var(--color-ex2);
+  color: var(--color-ex);
+}
+label,table{
+  color: var(--color-ex);
+}

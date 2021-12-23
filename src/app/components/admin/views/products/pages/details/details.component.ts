@@ -116,8 +116,9 @@ export class DetailsComponent implements OnInit,OnDestroy {
             response =>{
               if(response){
                 this.getStockMoves();
-                this.desacNotification();
-                //this._notificationService.getAll();
+                if(this.product.active_notification == true){
+                  this.desacNotification();
+                }
                 form.reset();
                 this.errorAlert = false;
               }

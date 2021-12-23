@@ -69,6 +69,15 @@ export class SweetAlert {
           timer: 1500
         })
       }
+      PAlert(){
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Producto Registrado Anteriormente',
+          showConfirmButton: false,
+          timer: 3000
+        })
+      }
       PsavedErrorAlert(){
         Swal.fire({
           position: 'center',
@@ -81,7 +90,7 @@ export class SweetAlert {
 //lertas para details component
     activeNotification(){
       Swal.fire({
-        position: 'center',
+        position: 'top-end',
         icon: 'success',
         title: 'Activado',
         showConfirmButton: false,
@@ -91,7 +100,7 @@ export class SweetAlert {
 
     desactiveNotification(){
       Swal.fire({
-        position: 'center',
+        position: 'top-end',
         icon: 'warning',
         title: 'Desactivado',
         showConfirmButton: false,

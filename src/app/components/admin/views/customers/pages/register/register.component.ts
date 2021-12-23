@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit,OnDestroy {
           this.sweet.savedCustomer();
           this.showAlert = false;
           form.reset();
+          this.allCustomers();
         }
       },
       error =>{
