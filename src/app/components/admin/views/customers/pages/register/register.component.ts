@@ -38,8 +38,8 @@ export class RegisterComponent implements OnInit,OnDestroy {
         if(response){
           this.sweet.savedCustomer();
           this.showAlert = false;
-          form.reset();
           this.allCustomers();
+          form.reset();
         }
       },
       error =>{
@@ -59,17 +59,19 @@ export class RegisterComponent implements OnInit,OnDestroy {
   allCustomers(){
     this.subscriptions.push(this._customerService.all().subscribe(
       response =>{
-        if(response.customers.length > 5){
-          //esta condicion permite cargar solamente los ultimos 5 productos registrados
-          //la variable limit limita la cantidad de filas que se van a mostrar en la lista
-          this.limit = response.customers.length - 5;
-        }
-        if(response.customers.length > 1){
-          this.customers = response.customers;
+        if(response.customers){
+          if(response.customers.length > 5){
+            //esta condicion permite cargar solamente los ultimos 5 productos registrados
+            //la variable limit limita la cantidad de filas que se van a mostrar en la lista
+            this.limit = response.customers.length - 5;
+          }
+          if(response.customers.length >= 1){
+            this.customers = response.customers;
+          }else console.log('error length');
         }
       },
       err =>{
-        console.log(err)
+        console.error(err)
       }
     ));
   }
