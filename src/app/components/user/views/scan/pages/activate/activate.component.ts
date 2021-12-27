@@ -10,7 +10,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 import { Customer } from 'src/app/models/customer';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 @Component({
   selector: 'app-activate',
   templateUrl: './activate.component.html',
@@ -88,9 +88,7 @@ export class ActivateComponent implements OnInit, OnDestroy {
                   this.sweet.QRCError();
                 }
               );
-            }else {
-              this.sweet.QRCError();
-            }
+            }else this.sweet.QRCError();
           }
         }
       )

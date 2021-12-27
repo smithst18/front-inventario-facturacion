@@ -3,8 +3,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { UserService } from './userController';
 import { global } from "./global";
-import { Notification } from 'src/app/interfaces/notification';
-import { tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })

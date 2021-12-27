@@ -12,6 +12,7 @@ import { StockService } from 'src/app/services/stock.service';
 import { UserService } from 'src/app/services/userController';
 import { NotificationService } from 'src/app/services/notification.service';
 import { SweetAlert } from 'src/app/services/alerts';
+import { SocketService } from 'src/app/services/socket.service';
 //material
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -40,6 +41,7 @@ export class DetailsComponent implements OnInit,OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   //material <=
   constructor(
+    private socket: SocketService,
     private router:Router,
     private _route:ActivatedRoute,
     private _productService:ProductService,
@@ -117,9 +119,10 @@ export class DetailsComponent implements OnInit,OnDestroy {
               if(response){
                 this.getStockMoves();
                 if(this.product.active_notification == true){
-                  this.desacNotification();
+                  this.desacNotification(false);
                 }
                 form.reset();
+                this.sweet.stockMoveOk();
                 this.errorAlert = false;
               }
             },
@@ -156,14 +159,15 @@ export class DetailsComponent implements OnInit,OnDestroy {
     ));
   }
   //desactivar notificacion
-  desacNotification(){
+  desacNotification(showSweet:boolean = true){
     this.notification.desactive = true;
     this.notification.product_id = this.id;
     this.subscriptions.push(this._notificationService.set(this.notification).subscribe(
       response =>{
         if(response){
-          this.sweet.desactiveNotification();
+          if(showSweet == true) this.sweet.desactiveNotification();
           this.getOneProduct();
+          this.socket.emitEvent();
         }
       },
       error =>{

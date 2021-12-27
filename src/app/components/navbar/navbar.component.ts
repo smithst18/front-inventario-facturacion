@@ -2,8 +2,6 @@ import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { Subscription } from 'rxjs';
 //models
 import { Notification } from 'src/app/models/notification';
-//services
-import  { NotificationService } from 'src/app/services/notification.service'
 //material
 import { MatIcon } from '@angular/material/icon';
 import { MatBadge } from '@angular/material/badge';

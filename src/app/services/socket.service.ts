@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
+import { global } from './global';
 @Injectable({
   providedIn: 'root'
 })
@@ -7,7 +8,7 @@ export class SocketService extends Socket{
   callBack: EventEmitter<any> = new EventEmitter();
   constructor(
   ) {
-    super({ url: 'http://localhost:5000', options: {}});
+    super({ url: global.urlSocker, options: {}});
     this.listen();
   } 
   listen = () =>{

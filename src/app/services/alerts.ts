@@ -87,7 +87,7 @@ export class SweetAlert {
           timer: 3000
         })
       }
-//lertas para details component
+//alertas para details component
     activeNotification(){
       Swal.fire({
         position: 'top-end',
@@ -105,6 +105,15 @@ export class SweetAlert {
         title: 'Desactivado',
         showConfirmButton: false,
         timer: 1500
+      })
+    }
+    stockMoveOk(){
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Movimiento guardado',
+        showConfirmButton: false,
+        timer: 2000
       })
     }
     //alertas para custome register
