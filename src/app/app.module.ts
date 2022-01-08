@@ -24,6 +24,9 @@ import { ScanModule } from './components/user/views/scan/scan.module';
 //loader
 import { LoaderModule } from './shared/components/loader/loader.module';
 import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
+//cokies
+import { CookieModule } from 'ngx-cookie';
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 //token para intercptor
 registerLocaleData(localEs, 'es');
 @NgModule({
@@ -41,13 +44,23 @@ registerLocaleData(localEs, 'es');
     MaterialModule,
     ScanModule,
     LoaderModule,
+    CookieModule.forRoot(),
   ],
   providers: [
     SweetAlert,
     UserService,
-    {provide:HTTP_INTERCEPTORS,useClass:LoaderInterceptor,multi:true},
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:LoaderInterceptor,
+      multi:true
+    },
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: TokenInterceptor, 
+      multi: true 
+    },
     {provide:LOCALE_ID,useValue:'es'}
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

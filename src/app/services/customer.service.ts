@@ -8,13 +8,12 @@ import { global } from "./global";
 })
 export class CustomerService {
   public url:string;
-  public token:string;
+  public token!:string;
   constructor(
     private _userService:UserService,
     private _http:HttpClient,
   ) { 
     this.url = global.url;
-    this.token = this._userService.getToken();
   }
   save(data:any):Observable<any>{
     let params = JSON.stringify(data);
@@ -24,8 +23,9 @@ export class CustomerService {
   }
 
   all():Observable<any>{
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    this.token = this._userService.getToken();
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+    
     return this._http.get(this.url + 'customer/get-customers ', {headers:headers});
   }
   allActives():Observable<any>{

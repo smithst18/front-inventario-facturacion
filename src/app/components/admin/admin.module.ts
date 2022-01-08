@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-//services
-import { UserService } from 'src/app/services/userController';
- 
-//components for admin module
+
 @NgModule({
   declarations: [
     AdminComponent,
@@ -15,6 +12,6 @@ import { UserService } from 'src/app/services/userController';
     CommonModule,
     AdminRoutingModule,
   ],
-  providers: [UserService],
+  providers: [],
 })
-export class AdminModule { }
+export class AdminModule {}
