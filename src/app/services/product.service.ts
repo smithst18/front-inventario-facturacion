@@ -21,23 +21,23 @@ export class ProductService {
 
   add(product:any):Observable<any>{
     let params = JSON.stringify(product);
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+                                   
     return this._http.post(this.url + 'product/add ', params, {headers:headers});
   }
   all():Observable<any>{
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+                                   
     return this._http.get(this.url + 'product/all',{headers:headers})
   }
   getOne(id:string):Observable<any>{
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+                                   
     return this._http.get(this.url + `product/get-one/${id}`, {headers:headers});
   }
   search(search:any):Observable<any>{
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+                                   
     return this._http.get(this.url + `product/search/${search}`, {headers:headers});
   }
 }

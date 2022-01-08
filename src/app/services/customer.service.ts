@@ -18,53 +18,53 @@ export class CustomerService {
   save(data:any):Observable<any>{
     let params = JSON.stringify(data);
     let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+
     return this._http.post(this.url + 'customer/register ', params, {headers:headers});
   }
 
   all():Observable<any>{
     this.token = this._userService.getToken();
     let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
-    
+
     return this._http.get(this.url + 'customer/get-customers ', {headers:headers});
   }
   allActives():Observable<any>{
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+
     return this._http.get(this.url + 'customer/get-actives ', {headers:headers});
   }
   one(id:any):Observable<any>{
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+
    
     return this._http.get(this.url + `customer/get-one/${id}`, {headers:headers});
   }
   activate(id:any):Observable<any>{
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+
    
     return this._http.get(this.url + `customer/activate-one/${id}`, {headers:headers});
   }
   desactivate(id:any):Observable<any>{
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+
    
     return this._http.get(this.url + `customer/desactivate-one/${id}`, {headers:headers});
   }
   search(search:any):Observable<any>{
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+
     return this._http.get(this.url + `customer/search-customer/${search}`, {headers:headers});
   }
   CreateQr(data:any):Observable<any>{
     let params = JSON.stringify(data);
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+  
     return this._http.post(this.url + 'qr/makeQR', params, {headers:headers});
   }
   GetQR():Observable<any>{
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+
     return this._http.get(this.url + 'qr/QRstatus/:id ', {headers:headers});
   }
 }

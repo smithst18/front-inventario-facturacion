@@ -19,8 +19,8 @@ export class NotificationService {
   //setea el status de la notificacion en el backend
   set(data:any):Observable<any>{
     let params = JSON.stringify(data);
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+                                   
     return this._http.post(this.url + 'notification/set-status ', params, {headers:headers});
   }
   //obtiene todas as notificaciones activas al momento

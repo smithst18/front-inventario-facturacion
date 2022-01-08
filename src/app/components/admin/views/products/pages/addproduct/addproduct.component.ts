@@ -41,7 +41,7 @@ export class AddproductComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
   getProductFamily(){
-    this.subscriptions.push(this._productTypeService.getTypes(this.token).subscribe(
+    this.subscriptions.push(this._productTypeService.getTypes().subscribe(
       response=>{
         if(response){
           this.productTypes = response.product_types;
@@ -54,9 +54,10 @@ export class AddproductComponent implements OnInit, OnDestroy {
   }
 
   addFamily(form:any){
-    this.subscriptions.push(this._productTypeService.addType(this.token,this.product_type).subscribe(
+    console.log(this.product_type);
+    this.subscriptions.push(this._productTypeService.addType(this.product_type).subscribe(
       response =>{
-        if(response.status = 200){
+        if(response.status == 200){
           //setear nuevamente el array de product types
           this.getProductFamily();
           this.messageSuccess = response.message;

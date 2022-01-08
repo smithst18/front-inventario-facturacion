@@ -20,19 +20,19 @@ export class StockService {
 
   saveMove(stockmove:any):Observable<any>{
     let params = JSON.stringify(stockmove);
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+                                   
     return this._http.post(this.url + 'stock/save-move-stock', params, {headers:headers});
   }
   operation(stockmove:any):Observable<any>{
     let params = JSON.stringify(stockmove);
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+                                   
     return this._http.post(this.url + 'stock/operation', params, {headers:headers});
   }
   getAllByProduct(id:any):Observable<any>{
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
-                                   .set( 'Authorization', this.token );
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
+                                   
     return this._http.get(this.url + `stock/get-all-by-product/${id}`, {headers:headers});
   }
 }
