@@ -1,24 +1,15 @@
 <div class="container p-3">
   <div class="row px-3">
-    <div class="col-md-12" *ngIf="payments.length < 1">
-      <!--loader-->
-      <div class="text-center">
-        <img src="assets/gift/loader.gif" alt="loader">
-      </div>
-      <p class="text-center">
-        Cargando Data
-      </p>
-    </div>
     <!--Table-->
     <div class="col-md-12 mat-elevation-z2 p-3 mb-3 bg-body rounded">
-      <div class="pt-5 ">
-        <p class="text-center fs-2 text-decoration-underline">
-          Lista de Facturas Actuales:
-        </p>
+      <div class="pt-3">
+        <h1 class="text-start fs-5">
+          FACTURAS:
+        </h1>
       </div>
       <div class="">
         <mat-form-field appearance="standard">
-          <mat-label>Buscar</mat-label>
+          <mat-label>Buscar Cliente</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Ej. jugo" #input>
         </mat-form-field>
       </div>
@@ -33,7 +24,8 @@
           <!-- name Column -->
           <ng-container matColumnDef="name" class="d-flex">
             <th mat-header-cell *matHeaderCellDef> Cliente: </th>
-            <td mat-cell *matCellDef="let payment"> {{payment.client.name}} </td>
+            <td mat-cell *matCellDef="let payment" class="clickeable" [routerLink]="['/admin/customers/details',payment.client.id]"
+            > {{payment.client.name | titlecase}} </td>
           </ng-container>
           <!-- client_ci Column -->
           <ng-container matColumnDef="client_ci">
@@ -44,8 +36,10 @@
           <ng-container matColumnDef="products">
             <th mat-header-cell *matHeaderCellDef> Productos: </th>
             <td mat-cell *matCellDef="let payment">
-              <div *ngFor="let product of payment.Product_Payments">
-                  {{product.paidProduct.name + ':' + ' ' + product.product_qty + ' ' + 'uds'}}
+              <div *ngFor="let product of payment.Product_Payments" class="clickeable">
+                <div [routerLink]="['/admin/products/details',product.paidProduct.id]">
+                  {{product.paidProduct.name + ':' + ' ' + product.product_qty + ' ' + 'uds' | titlecase}}
+                </div>
               </div>
             </td>
           </ng-container>
@@ -64,10 +58,10 @@
             <th mat-header-cell *matHeaderCellDef> Estado: </th>
             <td mat-cell *matCellDef="let payment">
               <span *ngIf="payment.status == false" class="text-danger">
-                deuda
+                Deuda
               </span>
               <span *ngIf="payment.status == true" class="text-success">
-                pagado
+                Pagado
               </span> 
             </td>
           </ng-container>
@@ -75,7 +69,7 @@
           <ng-container matColumnDef="confirm">
             <th mat-header-cell *matHeaderCellDef> - </th>
             <td mat-cell *matCellDef="let payment">
-              <a *ngIf="payment.status == false" matTooltip="Confirmar Pago" matTooltipClass = "tooltipPer" (click)="payConfirmation(payment.id)">
+              <a *ngIf="payment.status == false" matTooltip="Confirmar Pago" matTooltipClass = "tooltipPer" (click)="payConfirmation(payment.id)" class="pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
                   <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
                 </svg>
@@ -112,13 +106,17 @@
     <div class="col-md-6 p-3 mb-5 border rounded mat-elevation-z2 justify-content-center" *ngIf="payments.length > 0">
       <div class="text-center">
         <p>Ganacias del Dia:</p>
-        <div *ngIf="earns">{{earns.daysGain + " " + "$"}}</div>
+        <div [ngClass]="earns.daysGain > 0 ? 'earns-success' : 'earns-danger' " *ngIf="earns">
+          {{earns.daysGain + " " + "$"}}
+        </div>
       </div>
     </div>
     <div class="col-md-6 p-3 mb-5 border rounded mat-elevation-z2 justify-content-center" *ngIf="payments.length > 0">
       <div class="text-center">
         <p>Ganancias del mes:</p>
-        <div *ngIf="earns">{{earns.monthGain + " " + "$"}}</div>
+        <div [ngClass]="earns.monthGain > 0 ? 'earns-success' : 'earns-danger' " *ngIf="earns">
+          {{earns.monthGain + " " + "$"}}
+        </div>
       </div>
     </div>
   </div>

@@ -1,18 +1,8 @@
-<div class="container px-4">
-  <div class="row justify-content-around">
-    <!--loader-->
-    <div class="col-md-12" *ngIf="!product">
-      <!--loader-->
-      <div class="text-center">
-        <img src="assets/gift/loader.gif" alt="loader">
-      </div>
-      <p class="text-center">
-        Cargando Data
-      </p>
-    </div>
+<div class="container mb-2">
+  <div class="row justify-content-around mat-elevation-z6 p-5">
     <!--Product data-->
     <div class="col-lg-4" *ngIf="product">
-      <div class="border p-3">
+      <div class="mat-elevation-z2 p-3">
         <div>
           <h3 class="text-center">
             Detalles del producto:
@@ -116,8 +106,8 @@
       </div>
     </div>
     <!--stock e inventario-->
-    <div class="col-lg-8 border p-3" *ngIf="product">
-      <div class="row justify-content-center">
+    <div class="col-lg-8" *ngIf="product">
+      <div class="row justify-content-center mat-elevation-z2 p-3">
         <div class="col-lg-12 w-50 text-center">
           <div>
             <h3>
@@ -175,13 +165,13 @@
               </tr>
             </table>
           
-            <mat-paginator [pageSizeOptions]="[4]" aria-label="Select page of moves" showFirstLastButtons></mat-paginator>
+            <mat-paginator [pageSizeOptions]="[3]" aria-label="Select page of moves" showFirstLastButtons></mat-paginator>
           </div>
         </div>
       </div>
     </div>
     <!--opciones-->
-    <div class="col-lg-12 border mt-2 mb-5" *ngIf="product">
+    <div class="col-lg-12 mat-elevation-z2 mt-2 mb-2" *ngIf="product">
       <div class="row p-3">
         <div class="col-lg-5">
           <div>
@@ -198,7 +188,7 @@
           <div class="text-center">
             <form #notificationForm="ngForm" class="d-flex justify-content-center">
               <!--name-->
-              <div class="form-floating mb-2 notification-input">
+              <div class="form-floating mb- notification-input">
                 <input type="number" class="form-control text-center" id="floatingInput" placeholder="nvalue_to_report"
                 name="value_to_report" #name="ngModel" [(ngModel)]="notification.value_to_report">
                 <label for="floatingInput">cantidad</label>
@@ -218,3 +208,4 @@
     </div>
   </div>
 </div>
+<div class="clearfix">...</div>

@@ -28,11 +28,11 @@ th.mat-header-cell {
   text-align: center;
   justify-content:center;
 }
-.mat-row:hover .mat-cell {
+.clickeable:hover {
   cursor: pointer;
-  color: var(--color-1);
+  color: var(--color-s3);
+  font-weight: bold;
 }
-
 /**/
 .hideInvoices{
   display: none;

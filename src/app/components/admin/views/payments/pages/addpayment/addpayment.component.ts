@@ -25,6 +25,8 @@ export class AddpaymentComponent implements OnInit,OnDestroy {
   public id:any;
   public customer!:Customer;
   button :boolean;
+  showSearch:boolean;
+  showSearchCustomer:boolean;
   public search:any;
   public searchProduct:any;
   //arrays
@@ -43,6 +45,8 @@ export class AddpaymentComponent implements OnInit,OnDestroy {
     private _notificationService:NotificationService
   ) {
     this.button = false;
+    this.showSearch = false;
+    this.showSearchCustomer = false;
     this.customer = new Customer (0,"","","","","","",false);
     //facturacion
     this.invoice = new Invoice(
@@ -106,24 +110,36 @@ export class AddpaymentComponent implements OnInit,OnDestroy {
   }
   //finders para botones <======================================================
   serchCustomer(){
+    this.showSearchCustomer = false;
     this.subscriptions.push(this._customerService.search(this.search).subscribe(
       response =>{
-        if(response.customers) this.customers = response.customers;
+        if(response.customers){
+          this.customers = response.customers;
+          this.showSearchCustomer = true;
+        }
       },
       err =>{
-        console.log("any customer found");
+        if(err.status == 404){
+          console.log("any customer found");
+          this.showSearchCustomer = true;
+        }
       }
     ));
   }
   serchProduct(){
+    this.showSearch = false;
+    this.products = [];
     this.subscriptions.push(this._productService.search(this.searchProduct).subscribe(
       response =>{
         if(response){
           this.products = response.products;
+          this.showSearch = true;
         }
       },
       err =>{
-        console.log("any product found");
+        if(err.status == 404){
+          this.showSearch = true;
+        }
       }
     ));
   }

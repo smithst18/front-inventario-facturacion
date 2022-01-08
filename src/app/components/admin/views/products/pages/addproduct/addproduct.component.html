@@ -97,7 +97,7 @@
             </span>
           </form>
           <div class="text-center d-grid gap-1">
-            <button type="submit" class="btn btn-primary" 
+            <button type="submit" class="btn addProd-btn" 
               (click)="addProduct(productForm)" 
               [disabled]="productTypes == null || productTypes.length < 1 ">
                 Agregar
@@ -112,7 +112,7 @@
             Ultimos Productos Agregados
           </p>
           <div>
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered">
               <thead>
                 <tr>
                   <th scope="col">Codigo</th>
@@ -121,9 +121,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let producto of products | slice:limit">
+                <tr *ngFor="let producto of products | slice:limit" [routerLink]="['/admin/products/details',producto.id]">
                   <th>{{producto.product_code}}</th>
-                  <td>{{producto.name}}</td>
+                  <td>{{producto.name | titlecase}}</td>
                   <td>{{producto.createdAt | date}}</td>
                 </tr>
               </tbody>

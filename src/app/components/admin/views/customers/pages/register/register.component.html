@@ -78,7 +78,7 @@
             Ultimos Clientes Registrados
           </h2>
           <div>
-            <table class="table table-bordered table-hover mat-elevation-z1">
+            <table class="table table-bordered mat-elevation-z1">
               <thead>
                 <tr>
                   <th scope="col">Nombre:</th>
@@ -87,8 +87,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let customer of customers | slice:limit">
-                  <th>{{customer.name}}</th>
+                <tr *ngFor="let customer of customers | slice:limit" [routerLink]="['/admin/customers/details',customer.id]">
+                  <td>{{customer.name | titlecase}}</td>
                   <td>{{customer.email}}</td>
                   <td>{{customer.phone_number}}</td>
                 </tr>

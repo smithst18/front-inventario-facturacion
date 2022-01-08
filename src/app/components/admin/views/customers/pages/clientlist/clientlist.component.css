@@ -2,7 +2,10 @@
 .loader-box{
   height: 80vh;
 }
-
+/*table box */
+div>h1{
+  color: var(--color-p) !important;
+}
 /*table*/
 table {
   width: 100%;
@@ -16,6 +19,6 @@ td, th {
 }
 .mat-row:hover .mat-cell {
   cursor: pointer;
-  color: blue;
-  border-color: blue;
+  background:var(--color-p);
+  color: var(--color-ex2);
 }

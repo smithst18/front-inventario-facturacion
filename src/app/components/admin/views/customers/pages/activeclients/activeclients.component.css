@@ -2,7 +2,10 @@
 .loader-box{
   height: 80vh;
 }
-
+/*title */
+div>h1{
+  color: var(--color-p) !important;
+}
 /*table*/
 table {
   width: 100%;
@@ -26,6 +29,10 @@ th.mat-header-cell {
 .mat-cell {
   text-align: center;
   justify-content:center;
+}
+.mat-row:hover .mat-cell {
+  cursor: pointer;
+  color: var(--color-p);
 }
 /*icons*/
 .bi-power{

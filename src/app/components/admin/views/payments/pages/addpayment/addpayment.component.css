@@ -12,7 +12,23 @@ th.mat-header-cell {
   text-align: center;
   justify-content:center;
 }
-/**/
+/*links*/
 a{
   cursor: pointer;
+}
+/*buttons*/
+.btn{
+  background: var(--color-p3);
+  color: var(--color-ex2);
+}
+.btn:hover{
+  background: var(--color-p2);
+  color: var(--color-ex2);
+}
+/*ngclass for hidde search*/
+.hide-search{
+  visibility: hidden
+}
+.show-search{
+  visibility: visible;
 }

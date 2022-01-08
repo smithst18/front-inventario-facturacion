@@ -1,3 +1,13 @@
+/*buttons*/
+.addProd-btn{
+  background: var(--color-p3);
+  color: var(--color-ex2);
+}
+.addProd-btn:hover{
+  background: var(--color-p2);
+  color: var(--color-ex2);
+}
+
 button>svg{
   height:3rem;
   width:3rem;
@@ -6,4 +16,14 @@ button>svg{
 
 button>svg:hover{
   color:rgb(7, 182, 7)
+}
+/*table */
+label,table{
+  color: var(--color-ex);
+}
+
+table>tbody>tr:hover{
+  background:var(--color-p) ;
+  color: var(--color-ex2) !important;
+  cursor: pointer;
 }

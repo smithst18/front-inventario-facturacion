@@ -1,3 +1,7 @@
+/*tittle*/
+div>h1{
+  color: var(--color-p);
+}
 /*table*/
 table {
   width: 100%;
@@ -15,6 +19,9 @@ td {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+td>a{
+  cursor: pointer;
+}
 th.mat-header-cell {
   text-align: center !important;
 }
@@ -22,7 +29,15 @@ th.mat-header-cell {
   text-align: center;
   justify-content:center;
 }
-.mat-row:hover .mat-cell {
+.clickeable:hover {
   cursor: pointer;
-  color: var(--color-1);
+  color: var(--color-s3);
+  font-weight: bold;
+}
+/*earns styles*/
+.earns-success{
+  color: rgb(13, 207, 13);
+}
+.earns-danger{
+  color: rgb(255, 0, 0);
 }

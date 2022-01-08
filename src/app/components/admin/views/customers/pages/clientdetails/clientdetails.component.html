@@ -1,14 +1,5 @@
 <div class="container mt-5">
   <div class="row border mat-elevation-z2 g-5 px-3 mb-5">
-    <!-- loader -->
-    <div class="col-md-12" *ngIf="!customer">
-      <div class="text-center">
-        <img src="assets/gift/loader.gif" alt="loader">
-      </div>
-      <p class="text-center">
-        Cargando Data
-      </p>
-    </div>
     <!-- Customer data -->
     <div class="col-lg-4" *ngIf="customer">
       <div class="row mat-elevation-z1 p-3">
@@ -84,8 +75,11 @@
                 <th mat-header-cell *matHeaderCellDef> Producto/s </th>
                 <td mat-cell *matCellDef="let payment"> 
                   <div *ngFor="let product of payment.Product_Payments">
-                    <span matTooltip="{{'cantidad: '+ product.product_qty }}" matTooltipClass = "tooltipPer">
-                      {{product.paidProduct.name}}
+                    <span matTooltip="{{'cantidad: '+ product.product_qty }}" 
+                    matTooltipClass = "tooltipPer" 
+                    [routerLink]="['/admin/products/details',product.paidProduct.id]"
+                    class="clickeable">
+                      {{product.paidProduct.name | titlecase}}
                     </span>
                   </div>
                 </td>
@@ -105,10 +99,10 @@
                 <th mat-header-cell *matHeaderCellDef> Estado del pago </th>
                 <td mat-cell *matCellDef="let payment">
                   <span *ngIf="payment.status == false" class="text-danger">
-                    deuda
+                    Deuda
                   </span>
                   <span *ngIf="payment.status == true" class="text-success">
-                    pagado
+                    Pagado
                   </span>  
                 </td>
               </ng-container>
