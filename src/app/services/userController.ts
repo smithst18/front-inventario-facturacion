@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { identity, Observable } from "rxjs";
+import { Observable } from "rxjs";
 //models
 import { global } from "./global";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 //cokies
 import { CookieService } from 'ngx-cookie';
 

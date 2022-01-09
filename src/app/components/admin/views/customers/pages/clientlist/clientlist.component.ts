@@ -44,7 +44,7 @@ export class ClientlistComponent implements OnInit, OnDestroy {
         this.dataSource.sort = this.sort;
       },
       err =>{
-        console.log(err);
+        console.error(err);
       }
     ));
   }

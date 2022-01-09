@@ -9,13 +9,18 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+//services
 import { UserService } from 'src/app/services/userController';
+import { ExpiredService } from '../services/expired.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
   constructor(
+    private expiredSesionService:ExpiredService,
     private userService:UserService,
+    private _router: Router,
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -29,21 +34,26 @@ export class TokenInterceptor implements HttpInterceptor {
         headers:header,
       });
 
-      return next.handle(req).pipe(
-        catchError(this.handleError)
-      );
+      return next.handle(req)
+        .pipe(
+          catchError(
+            err =>{
+              if(err.status == 401){
+                //cerramos sesion
+                this.userService.closeSession();
+                //mostramos alerta de sesion expirada
+                this.expiredSesionService.showAlert();
+                //redireccionamos a login 
+                this._router.navigateByUrl('/signIn');
+                return throwError('Sesion Expired');
+              }
+              return throwError(err);
+            }
+          )
+        );
     }
 
-    return next.handle(request).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  handleError( err:HttpErrorResponse){
-    if(err.status == 401){
-      return throwError('Sesion Expired');
-    }
-    return throwError('some error:');
+    return next.handle(request);
   }
 }
 /*el nex.handle(envia la request)*/

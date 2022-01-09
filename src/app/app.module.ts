@@ -24,6 +24,8 @@ import { ScanModule } from './components/user/views/scan/scan.module';
 //loader
 import { LoaderModule } from './shared/components/loader/loader.module';
 import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
+//expired sesion
+import { SesionModule } from './shared/components/sesion-alert/sesion.module'
 //cokies
 import { CookieModule } from 'ngx-cookie';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
@@ -44,6 +46,7 @@ registerLocaleData(localEs, 'es');
     MaterialModule,
     ScanModule,
     LoaderModule,
+    SesionModule,
     CookieModule.forRoot(),
   ],
   providers: [
