@@ -21,14 +21,13 @@ export class ProductService {
 
   add(product:any):Observable<any>{
     let params = JSON.stringify(product);
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
                                    
-    return this._http.post(this.url + 'product/add ', params, {headers:headers});
+    return this._http.post(this.url + 'product/add ', params);
   }
   all():Observable<any>{
     let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
                                    
-    return this._http.get(this.url + 'product/all',{headers:headers})
+    return this._http.get(this.url + 'product/all');
   }
   getOne(id:string):Observable<any>{
     let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );

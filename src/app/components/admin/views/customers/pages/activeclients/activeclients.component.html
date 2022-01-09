@@ -2,15 +2,16 @@
   <div class="row px-3">
     <!--Table-->
     <div class="col-md-12 mat-elevation-z2 p-3 mb-5 bg-body rounded">
-      <div class="pt-5 ">
-        <h1 class="text-center fs-1">
-          Clientes Activos:
+      <div class="pt-3">
+        <h1 class="ms-3 text-start fs-5">
+          CLIENTES ACTIVOS:
         </h1>
+        <hr>
       </div>
-      <div class="">
+      <div class="text-end">
         <mat-form-field appearance="standard">
           <mat-label>Buscar</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Ej. jugo" #input>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Nombre cliente" #input>
         </mat-form-field>
       </div>
       <div class="border mat-elevation-z2">
@@ -83,6 +84,11 @@
         </table>
       
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" aria-label="Select page of users"></mat-paginator>
+      </div>
+      <div class="mt-2 text-center" *ngIf="customers.length < 1">
+        <span class="text-muted">
+          No hay clientes activos
+        </span>
       </div>
     </div>
   </div>

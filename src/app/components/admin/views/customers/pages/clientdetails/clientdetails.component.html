@@ -1,8 +1,8 @@
 <div class="container mt-5">
-  <div class="row border mat-elevation-z2 g-5 px-3 mb-5">
+  <div class="row border mat-elevation-z4 g-5 px-3 mb-5 bg-body">
     <!-- Customer data -->
     <div class="col-lg-4" *ngIf="customer">
-      <div class="row mat-elevation-z1 p-3">
+      <div class="row mat-elevation-z2 p-3">
         <!--tittle-->
         <div>
           <h3 class="text-center">
@@ -39,7 +39,7 @@
     </div>
     <!-- Customer invoices -->
     <div class="col-lg-8">
-      <div class="row justify-content-center mat-elevation-z1 px-2">
+      <div class="row justify-content-center mat-elevation-z2 px-2">
         <div class="col-lg-12 w-50 text-center" *ngIf="customer">
           <div class="pt-4">
             <h3>
@@ -63,7 +63,7 @@
             </mat-form-field>
           </div>
           <!--table-->
-          <div class="mat-elevation-z2">
+          <div class="mat-elevation-z2 mb-3">
             <table mat-table [dataSource]="dataSource" class="w-100">
               <!-- date Column -->
               <ng-container matColumnDef="date">
@@ -147,7 +147,7 @@
       </div>
     </div>
     <!--QR generate-->
-    <div class="col-lg-12 my-5" *ngIf="customer">
+    <div class="col-lg-12 my-5 " *ngIf="customer">
       <div class="row mat-elevation-z2 p-3 align-items-center justify-content-center">
         <!--button-->
         <div class="col-lg-4 text-center" *ngIf="!customer.qrcode">

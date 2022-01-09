@@ -1,6 +1,8 @@
-<app-navbar *ngIf="user && user.name"></app-navbar>
-<app-loader></app-loader>
-<div class="clearfix mb-3"  *ngIf="user && user.name">...</div>
-<router-outlet>
-</router-outlet>
+<div class="bg-light">
+  <app-navbar *ngIf="user && user.name"></app-navbar>
+  <app-loader></app-loader>
+  <div class="clearfix mb-3"  *ngIf="user && user.name">...</div>
+  <router-outlet>
+  </router-outlet>
+</div>
 

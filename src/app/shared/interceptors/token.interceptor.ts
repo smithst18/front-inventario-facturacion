@@ -24,6 +24,7 @@ export class TokenInterceptor implements HttpInterceptor {
     let token  =  this.userService.getToken();
     if(token != null || token  != undefined){
       const header = new HttpHeaders({
+        'Content-Type':'application/json',
         'Authorization':`${token}`,
       });
   

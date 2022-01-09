@@ -17,7 +17,7 @@ export class CustomerService {
   }
   save(data:any):Observable<any>{
     let params = JSON.stringify(data);
-    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' )
+    let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
 
     return this._http.post(this.url + 'customer/register ', params, {headers:headers});
   }

@@ -4,6 +4,9 @@ input ,textarea{
 label{
   color:rgb(0, 0, 0)!important;
 }
+a{
+  cursor: pointer;
+}
 /*table*/
 table {
   width: 100%;
@@ -28,6 +31,7 @@ th.mat-header-cell {
   text-align: center;
   justify-content:center;
 }
+/*links*/
 .clickeable:hover {
   cursor: pointer;
   color: var(--color-s3);

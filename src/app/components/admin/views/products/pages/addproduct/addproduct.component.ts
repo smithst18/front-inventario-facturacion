@@ -54,10 +54,9 @@ export class AddproductComponent implements OnInit, OnDestroy {
   }
 
   addFamily(form:any){
-    console.log(this.product_type);
     this.subscriptions.push(this._productTypeService.addType(this.product_type).subscribe(
       response =>{
-        if(response.status == 200){
+        if(response){
           //setear nuevamente el array de product types
           this.getProductFamily();
           this.messageSuccess = response.message;
