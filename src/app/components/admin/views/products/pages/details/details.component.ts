@@ -59,9 +59,17 @@ export class DetailsComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getId();
-    this.getOneProduct();
-    this.getStockMoves();
+    //esto para que en seleccion de la misma ruta con distinta id si cambie la informacion
+    //relacion a los ciclos de vida de angular (recordar)
+      this.subscriptions.push(
+        this._route.params.subscribe(
+        (params) => {
+          this.getId();
+          this.getOneProduct();
+          this.getStockMoves();
+        }
+      )
+    );
   }
   ngOnDestroy(): void{
     this.subscriptions.forEach(sub => sub.unsubscribe());

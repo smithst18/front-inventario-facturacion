@@ -26,6 +26,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --color-s3:#3a001b;
   --color-ex:#000000;
   --color-ex2:#ffffff;
+  --color-ok:#139b13;
+  --color-cancel:#ce0808;
+}
+/*Global buttons*/
+.btn-ok{
+  color: var(--color-ex2) !important;
+  background: var(--color-ok) !important;
+}
+.btn-cancel{
+  color: var(--color-ex2) !important;
+  background: var(--color-cancel) !important;
 }
 /*icons globales*/
 .bi-check-lg{

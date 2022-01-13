@@ -80,9 +80,9 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
               <li><h3 class="dropdown-header text-center">Notificaciones</h3></li>
               <li><hr class="dropdown-divider"></li>
-              <li *ngFor="let notification of notifications">
-                <a class="dropdown-item d-flex w-100" [routerLink]="['/admin/products/details/',notification.item.id]">
-                  <mat-icon class="me-3">email</mat-icon> 
+              <li *ngFor="let notification of notifications" class="notifications">
+                <a class="dropdown-item d-flex w-100" (click)="notiRoute(notification.item.id)">
+                  <mat-icon class="me-3 email-icon">email</mat-icon> 
                   <div class="text-start">
                     <p>
                       Stock minimo alcanzado.
@@ -93,11 +93,13 @@
                     </p>
                   </div>
                 </a>
+                <hr>
               </li>
               <li *ngIf="notifications != null && notifications.length < 1">
                 <p class="dropdown-header text-center text-muted p-3">
                   No hay notificaciones 
                 </p>
+                <hr>
               </li>
             </ul>
           </div>

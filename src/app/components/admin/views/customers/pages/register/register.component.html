@@ -11,30 +11,31 @@
         </div>
         <div>
           <form #customerForm="ngForm">
-            <!--name-->
+            <!--customer name-->
             <div class="form-floating mb-2">
               <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
               name="name" #name="ngModel" [(ngModel)]="customer.name" require>
               <label for="floatingInput">Nombre:</label>
             </div>
-            <!--price-->
+            <!--customer ci-->
             <div class="form-floating mb-2">
               <input type="text" class="form-control" id="floatingInput" placeholder="2758962"
               name="ci" #name="ngModel" [(ngModel)]="customer.ci" require>
-              <label for="floatingInput">CI: <span class="text-muted">"ejm: V-278965236"</span></label>
+              <label for="floatingInput">CI: <span class="text-muted">"278965236"</span></label>
             </div>
-            <!--product code-->
+            <!--customer email-->
             <div class="form-floating mb-2">
               <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
               name="email" #name="ngModel" [(ngModel)]="customer.email" require>
               <label for="floatingInput">Email:</label>
             </div>
-            <!--product-quantity-->
+            <!--customer-phone-->
             <div class="form-floating mb-2">
               <input type="text" class="form-control" id="floatingInput" placeholder="phone number"
               name="phone_number" #name="ngModel" [(ngModel)]="customer.phone_number" require>
               <label for="floatingInput">Numero telefonico:</label>
             </div>
+             <!--customer-address-->
             <div class="form-floating mb-3">
               <textarea class="form-control" id="floatingTextarea" placeholder="escribir direccion"
               name="address" #name="ngModel" [(ngModel)]="customer.address" require></textarea>
@@ -53,9 +54,9 @@
                   Debes cumplis lo siguiente:
                   <ul >
                     <li>Nombre y apellido requerido</li>
-                    <li>CI: V/E + codigo ejm : V-25698741</li>
+                    <li>CI: 25698741</li>
                     <li>email unico y requerido</li>
-                    <li>numero de telefono unico y requerido</li>
+                    <li>telefono unico y requerido (11) dig</li>
                   </ul>
                 </div>
               </div>

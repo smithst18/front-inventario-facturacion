@@ -25,17 +25,20 @@ mat-icon{
 .nav-link{
   color: var(--color-ex2);
 }
-.dropdown-item:is{
+.email-icon{
+  color: inherit;
+}
+.dropdown-item{
+  color: var(--color-p);
   transition-delay: 0.1s;
   transition-duration: 0.1s;
 }
 .dropdown-item:hover{
-  background: var(--color-p3);
+  background-color: var(--color-p3);
   color: var(--color-ex2);
   transition-delay: 0.1s;
-  transition-duration: 0.2s;
+  transition-duration: 0.1s;
 }
-/*clases de el dropdawn de notificaciones*/
 /*texto con el nombre del objeto*/
 .product-name{
   color: var(--color-2);

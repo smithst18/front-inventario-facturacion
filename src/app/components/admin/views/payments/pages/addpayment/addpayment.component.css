@@ -32,3 +32,15 @@ a{
 .show-search{
   visibility: visible;
 }
+/*customsearch add icon and text */
+#addcustomer{
+  color: var(--color-p);
+}
+.bi-plus{
+  color: rgb(1, 182, 1);
+}
+
+.total{
+  color: var(--color-s);
+  font-weight: bold;
+}

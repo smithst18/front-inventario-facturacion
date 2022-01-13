@@ -85,7 +85,10 @@ export class PaymentlistComponent implements OnInit,OnDestroy {
                 'La Factura a sido confirmada como pagada.',
                 'success'
               );
+              //setear los payments
               this. getPayments();
+              //setear las ganancias
+              this.getEarnings();
             }
           },
           err=>{

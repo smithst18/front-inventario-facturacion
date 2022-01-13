@@ -1,4 +1,5 @@
 <div class="container p-5 mat-elevation-z6 bg-body rounded">
+  <!--datos de la factura  y buscar productos-->
   <div class="row justify-content-around mb-3 ">
     <!--Payment Formulary-->
     <div class="col-lg-4">
@@ -23,7 +24,7 @@
         <!--iva-->
         <div class="form-floating mb-2">
           <input type="number" min="1" max="20" class="form-control" id="floatingInput"
-          name="iva" #name="ngModel" [(ngModel)]="invoice.payment.iva">
+          name="iva" #name="ngModel" [(ngModel)]="invoice.payment.iva" [disabled]="true">
           <label for="floatingInput">Iva general %:</label>
         </div>
       </form>
@@ -44,12 +45,20 @@
           <!--Table-->
           <form>
             <div class="input-group mb-3 dropdown">
-              <input type="search" class="form-control"
-              name="search" #name="ngModel" [(ngModel)]="searchProduct">
-              <button class="btn btn-outline-secondary" type="button" id="productdrop" data-bs-toggle="dropdown"
-              (click)="serchProduct()">Buscar</button>
+              <input 
+              type="search" 
+              class="form-control" 
+              name="search" 
+              #name="ngModel" 
+              [(ngModel)]="searchProduct" 
+              (keyup.enter)="serchProduct(true)">
+              <button 
+              class="btn btn-outline-secondary" 
+              id="searchProduct" 
+              data-bs-toggle="dropdown"
+              (click)="serchProduct(false)">Buscar</button>
 
-              <ul class="dropdown-menu dropdown-menu-end w-100" aria-labelledby="productdrop" [ngClass]="showSearch == true ? 'show-search' : 'hide-search' ">
+              <ul class="dropdown-menu dropdown-menu-end w-100" aria-labelledby="searchProduct" [ngClass]="showSearch == true ? 'show-search' : 'hide-search' ">
 
                 <li *ngFor="let product of products">
                   <a class="dropdown-item" (click)="addProductToList(product)">
@@ -69,7 +78,8 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-around mb-5">
+  <!--datos del cliente y productos elegidos-->
+  <div class="row justify-content-around mb-3">
     <!--client Formulary and search-->
     <div class="col-lg-4">
       <form class="border p-3 mat-elevation-z2" #CustomerForm="ngForm">
@@ -81,33 +91,118 @@
         </div>
         <div>
           <div class="input-group mb-3">
-            <input type="search" class="form-control" placeholder="Buscar Cliente" aria-label="Buscar Cliente" aria-describedby="button-addon2"
-            name="search" #name="ngModel" [(ngModel)]="search">
-            <button class="btn btn-outline-secondary" type="button" id="productdrop" data-bs-toggle="dropdown" *ngIf = "button == false"
-            (click)="serchCustomer()">
+            <input type="search" 
+            class="form-control" 
+            placeholder="Buscar Cliente" 
+            aria-label="Buscar Cliente"
+            name="search" 
+            #name="ngModel" 
+            [(ngModel)]="search" 
+            (keyup.enter)="serchCustomer(true)" 
+            >
+            <!--boton de busqueda-->
+            <button 
+            class="btn btn-outline-secondary" 
+            data-bs-toggle="dropdown" 
+            id="searchCustomer"
+            [disabled]="button == true"
+            (click)="serchCustomer(false)">
               Buscar
             </button>
-              <ul class="dropdown-menu dropdown-menu-end w-100" aria-labelledby="customerdrop"
+            <ul class="dropdown-menu dropdown-menu-end w-100" aria-labelledby="searchCustomer"
               [ngClass]="showSearchCustomer == true ? 'show-search' : 'hide-search'">
 
                 <li *ngFor="let customer of customers">
-                  <a class="dropdown-item" (click)="addCustomer(customer)">
+                  <a class="dropdown-item" (click)="setCustomer(customer)">
                     {{customer.name}} - {{customer.ci}}
                   </a>
                 </li>
                 <li *ngIf="customers.length < 1">
-                  <p class="dropdown-item">
+                  <p class="dropdown-item text-muted text-center">
                     no encontrado
                   </p>
                 </li>
+                <li *ngIf="customers.length < 1">
+                  <a class="dropdown-item text-center" id="addcustomer" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Agregar Nuevo 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                  </a>
+                </li>
 
-              </ul>
-            <!--disabled button-->
-            <button class="btn btn-outline-secondary disabled" type="button" id="button-addon2" *ngIf = "button == true">
-              Buscar
-            </button>
+            </ul>
           </div>
           <hr>
+        </div>
+        <!--modal for new client -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registrar Cliente Nuevo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form #customerForm>
+                  <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+                    name="name" #name="ngModel" [(ngModel)]="customer.name" require>
+                    <label for="floatingInput">Nombre:</label>
+                  </div>
+                  <!--ci-->
+                  <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="2758962"
+                    name="ci" #name="ngModel" [(ngModel)]="customer.ci" require>
+                    <label for="floatingInput">CI:</label>
+                  </div>
+                  <!--customer email-->
+                  <div class="form-floating mb-2">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                    name="email" #name="ngModel" [(ngModel)]="customer.email" require>
+                    <label for="floatingInput">Email:</label>
+                  </div>
+                  <!--customer phone -->
+                  <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="phone number"
+                    name="phone_number" #name="ngModel" [(ngModel)]="customer.phone_number" require>
+                    <label for="floatingInput">Numero telefonico:</label>
+                  </div>
+                  <!--customer-address-->
+                  <div class="form-floating mb-3">
+                    <textarea class="form-control" id="floatingTextarea" placeholder="escribir direccion"
+                    name="address" #name="ngModel" [(ngModel)]="customer.address" require></textarea>
+                    <label for="floatingTextarea">Dirección:</label>
+                  </div>
+                  <!--alert-->
+                  <div *ngIf="cusAddAlert">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                      <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                      </symbol>
+                    </svg>
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                      <div>
+                        Debes cumplis lo siguiente:
+                        <ul >
+                          <li>Nombre y apellido requerido</li>
+                          <li>CI: 25698741</li>
+                          <li>email unico y requerido</li>
+                          <li>telefono unico y requerido (11) dig</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!--alert-->
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-ok" (click)="addCustomer(customerForm)">Guardar</button>
+                <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+              </div>
+            </div>
+          </div>
         </div>
         <!--user form-->
         <div class="form-floating mb-2">
@@ -141,7 +236,7 @@
         <!--Table-->
         <div class="col-lg-12 table-container">
           <div class="mat-elevation-z2">
-            <table mat-table [dataSource]="dataSource" class="w-100">
+            <table mat-table [dataSource]="dataSource" class="w-100" (contentChanged)="totals()">
               <!-- code Column -->
               <ng-container matColumnDef="code">
                 <th mat-header-cell *matHeaderCellDef> Codigo </th>
@@ -158,8 +253,7 @@
               <ng-container matColumnDef="price">
                 <th mat-header-cell *matHeaderCellDef> Precio</th>
                 <td mat-cell *matCellDef="let productsSelected">
-                  <input type="number" min="1" class="w-50 text-center" 
-                  name="search" #name="ngModel" [(ngModel)]="productsSelected.price"> 
+                  {{productsSelected.price}} 
                 </td>
               </ng-container>
               <!-- stock Column -->
@@ -167,7 +261,9 @@
                 <th mat-header-cell *matHeaderCellDef> Cantidad </th>
                 <td mat-cell *matCellDef="let productsSelected"> 
                   <input type="number" min="1" class="w-50 text-center"
-                  name="search" #name="ngModel" [(ngModel)]="productsSelected.product_quantity">
+                  name="search" #name="ngModel" 
+                  [(ngModel)]="productsSelected.product_quantity"
+                  (ngModelChange)="totals()">
                 </td>
               </ng-container>
               <!-- remove Column -->
@@ -193,10 +289,31 @@
         </div>
       </div>
     </div>
-    <!--boton de formulario-->
-    <div class="d-grid gap-2 mt-3">
-      <button class="btn" type="button" (click)="addpayment()">Facturar</button>
+    <!--boton de acturacion  y total-->
+    
+  </div>
+  <!--boton de acturacion  y total-->
+  <div class="row justify-content-around mb-5">
+    <!--boton par aenviar facturacion-->
+    <div class="col-lg-4">
+      <div class="border p-4 mat-elevation-z2 d-grid gap-2">
+        <button class="btn" type="button" (click)="addpayment()">Generar Factura</button>
+      </div>
     </div>
+    <!-- totales -->
+    <div class="col-lg-8 border p-3 mat-elevation-z2">
+      <div class="row justify-content-center align-items-center gx-3">
+        <div class="col-lg-4 d-flex">
+          <div class="p-3 border mat-elevation-z1 w-100">Productos: {{units}}</div>
+        </div>
+        <div class="col-lg-4 d-flex">
+          <div class="p-3 border mat-elevation-z1 w-100">Sub Total: {{sub_total}}</div>
+        </div>
+        <div class="col-lg-4 d-flex">
+          <div class="p-3 border mat-elevation-z1 w-100 total">Total: {{total}}</div>
+        </div>
+      </div>
+    </div>  
   </div>
 </div>
 <div class="clearfix">...</div>

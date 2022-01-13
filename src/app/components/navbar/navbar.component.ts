@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 //models
 import { Notification } from 'src/app/models/notification';
 //material
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public notifi_qty!:number
   public user:any;
   constructor(
+    private router:Router,
     private socket: SocketService,
     private _userService:UserService,
   ){
@@ -44,5 +46,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   logOut(){
     this._userService.closeSession();
+  }
+  notiRoute(id:any){
+    //[routerLink]="['/admin/products/details/',notification.item.id,{replaceUrl:true,skipLocationChange:false}]"
+    this.router.navigateByUrl(`/admin/products/details/${id}`);
   }
 }
