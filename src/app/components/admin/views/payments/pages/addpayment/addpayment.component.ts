@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, OnDestroy  } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -94,9 +94,6 @@ export class AddpaymentComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void{
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
-  ngOnChanges():void{
-    this.totals();
-  }
   //coming from qr
   getId():void{
     this.subscriptions.push(this._route.params.subscribe(
@@ -136,6 +133,8 @@ export class AddpaymentComponent implements OnInit, OnDestroy {
           this.cusAddAlert = false;
           //this.allCustomers();
           $('.modal').modal('toggle');
+          //seteamos el id customer de la factura del nuevo usuario creado
+          this.invoice.payment.customer_id = response.customer.id;
         }
       },
       error =>{
@@ -204,6 +203,8 @@ export class AddpaymentComponent implements OnInit, OnDestroy {
       this.dataSource = new MatTableDataSource(this.productsSelected);
       this.dataSource.paginator = this.paginator;
     }else this.sweet.badsearch();
+    //set the totals again
+    this.totals();
   }
   removeFromList(position:any){
     //find the product position
@@ -226,11 +227,13 @@ export class AddpaymentComponent implements OnInit, OnDestroy {
     this.units = 0;
     this.sub_total = 0;
     this.total = 0;
-    this.productsSelected.forEach(p => {
+    if(this.productsSelected.length > 0){
+      this.productsSelected.forEach(p => {
       this.units += p.product_quantity;
       this.sub_total += p.price * p.product_quantity;
     });
     this.total += (this.sub_total * 0.16) + this.sub_total;
+    }
   }
   //facturation
   addpayment(){
@@ -245,7 +248,10 @@ export class AddpaymentComponent implements OnInit, OnDestroy {
     }).then((result) => {
       if (result.isConfirmed) {
         //set object
+        //si 0 esto por si se crea un usuario en esta estancia 
+        if(this.invoice.payment.customer_id == 0)
         this.invoice.payment.customer_id = this.customer.id;
+
         this.invoice.products = this.productsSelected.slice();
         //http request
         this.subscriptions.push(this._invoiceService.add(this.invoice).subscribe(
@@ -261,6 +267,8 @@ export class AddpaymentComponent implements OnInit, OnDestroy {
               //this._notificationService.getAll();
               this.dataSource = new MatTableDataSource(this.productsSelected);
               this.dataSource.paginator = this.paginator;
+              //seteamos a 0 nuevamente para eevitar errores y no facturar al anterior
+              this.invoice.payment.customer_id = 0; 
               this.socket.emitEvent();
             }
           },

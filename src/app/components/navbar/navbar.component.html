@@ -112,7 +112,12 @@
             {{user.name +' '+user.surname}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" (click)='logOut()'>Cerrar sesion</a></li>
+            <li class="">
+              <a class="dropdown-item d-flex align-items-center" (click)='logOut()'>
+                Cerrar sesion
+                <mat-icon class="exit-icon ms-3">exit_to_app</mat-icon>
+              </a>
+            </li>
             <!--
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Configuracion</a></li>

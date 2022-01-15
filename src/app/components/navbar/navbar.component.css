@@ -34,7 +34,7 @@ mat-icon{
   transition-duration: 0.1s;
 }
 .dropdown-item:hover{
-  background-color: var(--color-p3);
+  background: var(--color-p3);
   color: var(--color-ex2);
   transition-delay: 0.1s;
   transition-duration: 0.1s;
@@ -46,6 +46,10 @@ mat-icon{
 /*icons*/
 .notifications-bell{
   font-size: 1.4rem !important;
+}
+.exit-icon{
+  color: inherit;
+  background-color: inherit;
 }
 .notifications-bell:hover{
   opacity: 0.8;

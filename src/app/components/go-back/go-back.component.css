@@ -1,0 +1,19 @@
+/*general icon back*/
+.icon-back>a{
+  cursor: pointer;
+}
+.icon-back{
+  height: 40px;
+}
+.icon-back>a>.mat-icon{
+  font-size: 25px !important;
+  color: var(--color-p);
+}
+.icon-back>a:hover .mat-icon{
+  color: var(--color-s);
+  font-size: 26px !important;
+}
+.mat-mini-fab{
+  color: var(--color-ex2) !important;
+  background: var(--color-p) !important;
+}

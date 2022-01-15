@@ -28,6 +28,7 @@ import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
 //cokies
 import { CookieModule } from 'ngx-cookie';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { GoBackComponent } from './components/go-back/go-back.component';
 //token para intercptor
 registerLocaleData(localEs, 'es');
 @NgModule({
@@ -35,6 +36,7 @@ registerLocaleData(localEs, 'es');
     AppComponent,
     LoginComponent,
     NavbarComponent,
+    GoBackComponent,
   ],
   imports: [
     BrowserModule,
