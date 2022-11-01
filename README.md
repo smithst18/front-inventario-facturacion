@@ -1,5 +1,5 @@
 # Aplicativo web de facturacion e inventario 🛒
-[prueba del sistema](https://inv-fact-app-smith.netlify.app/signIn)
+[prueba del sistema](https://inv-fact-app-smith.netlify.app)
 ## Comenzando 🚀
 
 
