@@ -1,8 +1,6 @@
-# SGT sistema de gestion de Tickets ⚙
-
+# Aplicativo web de facturacion e inventario 🛒
+[prueba del sistema](https://inv-fact-app-smith.netlify.app/signIn)
 ## Comenzando 🚀
-Sistema de gestion de tickets que permite procesar solicitudes de soporte tecnico y generar estadisticas de las mismas.
-el sistema cuenta con un dashboard principal correspondiente a cada rol de usuario user, tenico, administrador
 
 
 ### Instalación 🔧
