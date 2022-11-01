@@ -2,12 +2,13 @@
 [Prueba gratuita](https://inv-fact-app-smith.netlify.app)
 ## Comenzando 🚀
 
-aplicacion spa  diseñada  para llevar la gestion de un negocio contando con multiples modulos 
-modulo de  inventario: permite añadir retirar y descartar stock asu vez envia notificaciones en tiempo real cuando el inventario de determinado producto esta por acabarse.
+### Aplicacion spa  diseñada  para llevar la gestion de un negocio contando con multiples modulos 
 
-modulo de facturacion: permite crear facturas y gestionar la venta de productos en un negocio pequeño calculando el costo del producto con su iva correspondiente incluido el mismo genera una factura la cual puede ser descargada.
+* modulo de  inventario: permite añadir retirar y descartar stock asu vez envia notificaciones en tiempo real cuando el inventario de determinado producto esta por acabarse.
 
-modulo de clientes: es un modulo adicional que permite llevar una lista de clientes y el status de los mismos ademas de su gestion
+* modulo de facturacion: permite crear facturas y gestionar la venta de productos en un negocio pequeño calculando el costo del producto con su iva correspondiente incluido el mismo genera una factura la cual puede ser descargada.
+
+* modulo de clientes: es un modulo adicional que permite llevar una lista de clientes y el status de los mismos ademas de su gestion
 
 
 
